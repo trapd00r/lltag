@@ -13,6 +13,7 @@ require Lltag::CDDB ;
 require Lltag::Parse ;
 require Lltag::Rename ;
 
+use File::LsColor qw(ls_color);
 use Getopt::Long ;
 Getopt::Long::Configure('noignorecase', 'noautoabbrev', 'bundling') ;
 
@@ -826,7 +827,7 @@ while ( @files ) {
     my $res ;
 
     print "\n" ;
-    print "Processing file \"".$file."\"...\n" ;
+    printf "Processing '%s'\n", ls_color($file);
 
     my ($parsename, $backend) = extract_parsename_and_backend $file ;
     if (not defined $backend) {
