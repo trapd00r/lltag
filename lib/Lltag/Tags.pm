@@ -1,5 +1,6 @@
 package Lltag::Tags ;
 
+use Term::ExtendedColor qw(:all);
 use strict ;
 no strict "refs" ;
 
@@ -28,7 +29,7 @@ sub display_one_tag_value {
 	print $prefix.ucfirst($field).": <binary data>\n"
     } elsif (ref($values->{$field}) ne 'ARRAY') {
 	print $prefix.ucfirst($field).": "
-	    . ($values->{$field} eq "" ? "<CLEAR>" : $values->{$field}) ."\n"
+	    . ($values->{$field} eq "" ? "<CLEAR>" : bg(52, fg(196, $values->{$field}))) ."\n"
     } else {
 	my @vals = @{$values->{$field}} ;
 	for(my $i = 0; $i < @vals; $i++) {
